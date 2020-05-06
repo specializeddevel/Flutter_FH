@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
     datos.forEach( (opt) {
       Widget widgetTemp = ListTile(
         title: Text(opt['texto']),
-        leading: Icon(Icons.check_circle, color: Colors.green,),
+        leading: Icon(Icons.check_circle, color: Colors.orangeAccent,),
         trailing: Icon(Icons.arrow_right),
         onTap: (){
           
