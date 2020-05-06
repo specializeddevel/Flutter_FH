@@ -15,18 +15,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _lista() {
-  //print(menuProvider.opciones); //imprime el contenido de la lista opciones en consola
-    return FutureBuilder(
-      future: menuProvider.cargarData(),
-      builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
-        return ListView(
-          children: _listaItems(snapshot.data),
-        );         
-      },
-    );       
-  }
-
   List<Widget> _listaItems(List<dynamic> datos ) {
 
     List<Widget> opciones = [];
