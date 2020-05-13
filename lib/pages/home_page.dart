@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
   //print(menuProvider.opciones); //imprime el contenido de la lista opciones en consola
     return FutureBuilder(
       future: menuProvider.cargarData(),
+      initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
         return ListView(
           children: _listaItems(snapshot.data, context),
@@ -30,6 +31,7 @@ class HomePage extends StatelessWidget {
 
   List<Widget> _listaItems(List<dynamic> datos, context ) {
 
+    
     List<Widget> opciones = [];
     datos.forEach( (opt) {
       Widget widgetTemp = ListTile(

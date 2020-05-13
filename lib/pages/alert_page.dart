@@ -9,6 +9,15 @@ class AlertPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Alert Page'),        
       ),
+      body: Center(
+        child: RaisedButton(
+          child: Text('Mostrar Alert'),
+          shape: StadiumBorder(),
+          color: Colors.blue,
+          textColor: Colors.white,          
+          onPressed: (){},
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_back),
         onPressed: (){
@@ -17,4 +26,9 @@ class AlertPage extends StatelessWidget {
       ),
     );    
   }
+
+  void _mostrarAlert(){
+    
+  }
+
 }

@@ -14,13 +14,13 @@ class MyApp extends StatelessWidget {
       //home: HomePage(),
       initialRoute: '/',
       routes: getApplicationRoutes(),      
-       onGenerateRoute: (RouteSettings settings) {
+      onGenerateRoute: (RouteSettings settings) {
           print('Ruta no encontrada: ${ settings.name }');
           return MaterialPageRoute(
             builder: (context){
               return AlertPage();
             });
-       }
+      }
     );
   }
 }
