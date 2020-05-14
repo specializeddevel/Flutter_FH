@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:componentes/pages/alert_page.dart';
 import 'package:componentes/pages/avatar_page.dart';
 import 'package:componentes/pages/home_page.dart';
+import 'package:componentes/pages/animated_container.dart';
+
 
 Map<String, WidgetBuilder> getApplicationRoutes(){
 
@@ -13,6 +15,7 @@ Map<String, WidgetBuilder> getApplicationRoutes(){
                   },
         'alert' : (BuildContext context) => AlertPage(),
         'avatar': (context) => AvetarPage(),
-        'card': (context) => CardPage(),
+        'card'  : (context) => CardPage(),
+        'animatedContainer': (context) => AnimatedContainerPage(),
    };
 }
