@@ -11,6 +11,10 @@ class _InputPageState extends State<InputPage> {
   String _email = '';
   String _fecha = '';
 
+  String _opcionSeleccionada = 'Seleccione un valor';
+
+  List _poderes = ['Seleccione un valor','Volar', 'Rayos X', 'Super aliento', 'Super fuerza', 'Otro poder', 'el ultimo podeeeeesssssssseeeeeeer'];
+
   TextEditingController _inputFieldDateController = new TextEditingController();
 
   @override
@@ -30,6 +34,8 @@ class _InputPageState extends State<InputPage> {
           Divider(),
           _crearFecha(context),
           Divider(),
+          _crearDropDown(),
+          Divider(),
           _crearPersona(),
         ],
       ),      
@@ -39,7 +45,7 @@ class _InputPageState extends State<InputPage> {
   Widget _crearInput() {
 
     return TextField(
-      autofocus: true,
+      //autofocus: true,
       textCapitalization: TextCapitalization.words,
       decoration: InputDecoration(
         border: OutlineInputBorder(
@@ -64,6 +70,7 @@ class _InputPageState extends State<InputPage> {
     return ListTile(
       title: Text('El nombre es: $_nombre'),
       subtitle: Text('Email: $_email'),
+      trailing: Text(_opcionSeleccionada),
     );
   }
 
@@ -136,4 +143,38 @@ class _InputPageState extends State<InputPage> {
   }
 
   }
+
+List<DropdownMenuItem<String>> _getOpcionesDropDown(){
+
+  List<DropdownMenuItem<String>> listaTemp= new List();
+
+  _poderes.forEach((poder) { 
+
+    listaTemp.add( DropdownMenuItem(
+      child: Text(poder),
+      value: poder,)
+    );
+  });
+  return listaTemp;
+}
+
+Widget _crearDropDown() {
+  return  Row(
+    children: <Widget>[            
+      Icon(Icons.select_all),
+      SizedBox(width: 22.0,),
+      DropdownButton(       
+          //icon: Icon(Icons.access_alarms), 
+          value: _opcionSeleccionada,
+          items: _getOpcionesDropDown(), 
+          onChanged:(opt){
+            setState((){
+              _opcionSeleccionada=opt;
+            });      
+        }
+      ),
+      
+    ],
+  );
+}
 }
