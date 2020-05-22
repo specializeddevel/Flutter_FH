@@ -69,7 +69,8 @@ class CardPage extends StatelessWidget {
       child: Column(
         children: <Widget>[          
           FadeInImage(
-            image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/1/1d/Upper_Kachura_lakes_-_Skardu_city_-Gilgit-Baltistan_Pakistan.jpg') ,
+            //image: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/1/1d/Upper_Kachura_lakes_-_Skardu_city_-Gilgit-Baltistan_Pakistan.jpg') ,
+            image: NetworkImage('https://picsum.photos/500/300/?image=110'),
             placeholder: AssetImage('assets/jar-loading.gif'),
             fadeInDuration: Duration(milliseconds: 200),
             fit: BoxFit.cover,

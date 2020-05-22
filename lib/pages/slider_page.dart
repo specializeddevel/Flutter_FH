@@ -8,6 +8,7 @@ class SliderPage extends StatefulWidget {
 class _SliderPageState extends State<SliderPage> {
 
   double _valorSlider = 100.0;
+  bool _bloquearCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +22,8 @@ class _SliderPageState extends State<SliderPage> {
           child: Column(              
               children: <Widget>[                
                 _crearSlider(),
+                _crearChecBox(),
+                _crearSwitch(),
                 Expanded(
                   child: _crearImagen()
                 ),                
@@ -39,18 +42,47 @@ class _SliderPageState extends State<SliderPage> {
       value: _valorSlider,
       min: 10.0,
       max: 400.0,
-      onChanged: (valor){
+      onChanged: (_bloquearCheck) ? null :
+      (valor){
         setState(() {
-        _valorSlider = valor;          
+          _valorSlider = valor;  
         });
       }
     );
 
   }
 
-  _crearImagen() {
+  Widget _crearChecBox() {
+
+    return CheckboxListTile(
+      title: Text('Bloquear Slider'),
+      value: _bloquearCheck,       
+      onChanged: ( valor ){
+        setState(() {
+          _bloquearCheck = valor;          
+        }
+        );           
+      }
+    );    
+  }
+
+  Widget _crearImagen() {
     return Image(image: NetworkImage('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F-UtiB7IeBRao%2FUGBNZjXckHI%2FAAAAAAAAACo%2FYfxdBX41Xe4%2Fs1600%2FBatman_Logo.png&f=1&nofb=1'),
     width: _valorSlider,
-    fit: BoxFit.contain,);    
+    fit: BoxFit.contain,
+    );    
+  }
+
+  Widget _crearSwitch() {
+    return  SwitchListTile(
+      title: Text('Bloquear Slider'),
+      value: _bloquearCheck,       
+      onChanged: ( valor ){
+        setState(() {
+          _bloquearCheck = valor;          
+        }
+        );           
+      }
+    );    
   }
 }
