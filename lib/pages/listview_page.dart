@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ListaPage extends StatefulWidget {
@@ -7,7 +9,7 @@ class ListaPage extends StatefulWidget {
 
 class _ListaPageState extends State<ListaPage> {
 
-  List _listaNumeros = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+  //List<int> _listaNumeros = [];  
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +26,46 @@ class _ListaPageState extends State<ListaPage> {
     );
   }
 
-  Widget _crearLista() {    
+  
 
-    return ListView.builder(
-      itemCount: _listaNumeros.length,
-      itemBuilder: (BuildContext context, int index ){
-
-        final _imagen = _listaNumeros[index];
-
-        return FadeInImage(
-          image: NetworkImage('https://picsum.photos/500/300/?image=$_imagen'),
-          placeholder: AssetImage('assets/jar-loading.gif'),
-        );
-      },  
-      
+  Widget _crearLista()  {   
+    return FutureBuilder(
+      future: _cargarLista(),
+      initialData: [],
+      builder: (context, AsyncSnapshot<List<dynamic>> snapshot){
+        return _llenaLista(snapshot.data, context);
+      },            
     );
+  }
+  
+  Future<List<dynamic>> _cargarLista() async {
+    return await _poblarNumeros();    
+  }
+  
+   _poblarNumeros(){
+    List listTemp=[];
+    final random = Random();
 
+    for (int i = 0; i < 75; i++) {
+      listTemp.add(random.nextInt(79));
+    }    
+    return listTemp;
+  }
+  
+  Widget _llenaLista(List<dynamic> datos, context) {
+    return ListView.builder(               
+          padding: EdgeInsets.only(top: 10.0),
+          itemCount: datos.length,      
+          itemBuilder: (BuildContext context, index ){                    
+            final _imagen = datos[index];                    
+            return FadeInImage(
+              
+              image: NetworkImage('https://picsum.photos/500/300/?image=$_imagen'),
+              placeholder: AssetImage('assets/jar-loading.gif'),
+              
+            );            
+          },  
+          
+        );
   }
 }
